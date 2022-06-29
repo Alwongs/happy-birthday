@@ -1,7 +1,9 @@
 <template>
     <div class="home-page">
         <h1 :style="{ 'margin-right': gap + '%' }">Happy birthday</h1>
-        <footer :style="{ 'margin-right': gap2 + '%' }">to you!!!</footer>
+        <footer>
+            <h1 :style="{ 'margin-left': gap2 + '%' }">to you!!!</h1>
+        </footer>
     </div>
 </template>
 
@@ -14,13 +16,18 @@ export default {
         }
     },
     methods: {
-    move() {
-        setInterval(() => {
-            if(this.gap < 0) {
-                this.gap++;
-            }
-        }, 10)
-    },
+        move() {
+            setInterval(() => {
+                if(this.gap < 0) {
+                    this.gap++;
+                }
+                if(this.gap === 0) {
+                    if(this.gap2 < 0) {
+                        this.gap2++;
+                    }                    
+                }
+            }, 10)
+        }
     },
     mounted() {
         this.move();
@@ -38,7 +45,7 @@ export default {
 h1 {
     text-align: center;
     padding: 32px;
-    font-size: 64px;
+    font-size: 128px;
     color: white;
 }
 
