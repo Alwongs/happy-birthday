@@ -68,15 +68,44 @@ export default {
             const ctx = canvas.getContext('2d');       
             ctx.fillStyle = "white";
             setInterval(() => {
-               if (this.x >= 200) {
+               if (this.x >= 200 && this.x < 285) {
                     ctx.fillRect(this.x, this.y, 15, 15);
                     this.y--;
                     this.x++;
-                }
-                if (this.s < 300) {
-                    return
+                } else {
+                    this.drawLeftEye();
                 }
             }, 100);            
+        },
+        drawLeftEye() {
+            const canvas = document.getElementById('game');
+            const ctx = canvas.getContext('2d');       
+            ctx.fillStyle = "white";
+            this.x = 120;
+            this.y = 80;
+            setInterval(() => {
+               if (this.y > 20) {
+                    ctx.fillRect(this.x, this.y, 15, 15);
+                    this.y--;
+                } else {
+                    this.drawRightEye();
+                }
+            }, 500);            
+        },
+        drawRightEye() {
+            const canvas = document.getElementById('game');
+            const ctx = canvas.getContext('2d');       
+            ctx.fillStyle = "white";
+            this.x = 180;
+            this.y = 80;
+            setInterval(() => {
+               if (this.y > 20) {
+                    ctx.fillRect(this.x, this.y, 15, 15);
+                    this.y--;
+                } else {
+                    return;
+                }
+            }, 500);            
         },
     },
     mounted() {
@@ -114,7 +143,6 @@ footer {
     
 }
 #game {
-    border: 2px solid red;
     width: 300;
     height: 200;
     margin: 0 auto;
