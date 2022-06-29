@@ -1,8 +1,11 @@
 <template>
     <div class="home-page">
-        <h1 :style="{ 'margin-right': gap + '%' }">Happy birthday</h1>
+        <header>
+            <h1 :style="{ 'margin-right': gap + '%' }">Happy birthday</h1>
+        </header>
+        <canvas id="game" width="300" height="200"></canvas>
         <footer>
-            <h1 :style="{ 'margin-left': gap2 + '%' }">to you!!!</h1>
+            <h1 :style="{ 'margin-left': gap2 + '%' }">to you!</h1>
         </footer>
     </div>
 </template>
@@ -12,7 +15,9 @@ export default {
     data() {
         return {
             gap: -200,
-            gap2: -200
+            gap2: -200,
+            x: 0,
+            y: 100,
         }
     },
     methods: {
@@ -26,8 +31,53 @@ export default {
                         this.gap2++;
                     }                    
                 }
+                if(this.gap === 0 && this.gap2 === 0) {
+                    this.drawSmileFirst();
+                }
             }, 10)
-        }
+        },
+        drawSmileFirst() {
+            const canvas = document.getElementById('game');
+            const ctx = canvas.getContext('2d');       
+            ctx.fillStyle = "white";
+            setInterval(() => {
+                if ( this.y < 185 && this.x < 100) {                    
+                    ctx.fillRect(this.x, this.y, 15, 15);
+                    this.y++;
+                    this.x++;
+                } else {
+                    this.drawSmileSecond();
+                }
+            }, 100);
+        },
+        drawSmileSecond() {
+            const canvas = document.getElementById('game');
+            const ctx = canvas.getContext('2d');       
+            ctx.fillStyle = "white";
+            setInterval(() => {
+               if (this.y === 185 && this.x < 200) {
+                    ctx.fillRect(this.x, this.y, 15, 15);
+                    this.x++;
+                } else {
+                    this.drawSmileThird();
+                }
+            }, 100);            
+        },
+        drawSmileThird() {
+            const canvas = document.getElementById('game');
+            const ctx = canvas.getContext('2d');       
+            ctx.fillStyle = "white";
+            setInterval(() => {
+               if (this.x >= 200) {
+                    ctx.fillRect(this.x, this.y, 15, 15);
+                    this.y--;
+                    this.x++;
+                }
+                if (this.s < 300) {
+                    return
+                }
+            }, 100);            
+        },
     },
     mounted() {
         this.move();
@@ -38,6 +88,9 @@ export default {
 <style lang="scss">
 
 .home-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-image: url('../assets/img/jpg/sea.jpg');
     background-size: cover;
     height: 100vh;
@@ -47,6 +100,23 @@ h1 {
     padding: 32px;
     font-size: 128px;
     color: white;
+    @media (min-width: 1024px) and (max-width: 1440px) {
+        font-size: 86px;
+    }     
+    @media (min-width: 768px) and (max-width: 1024px) {
+        font-size: 64px;
+    }      
+    @media (max-width: 768px) {
+        font-size: 64px;
+    }     
 }
-
+footer {
+    
+}
+#game {
+    border: 2px solid red;
+    width: 300;
+    height: 200;
+    margin: 0 auto;
+}
 </style>
