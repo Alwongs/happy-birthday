@@ -1,6 +1,7 @@
 <template>
     <div class="home-page">
         <header>
+            <audio :src="require('@/assets/sounds/mp3/sound.mp3')"  autoplay="autoplay" controls></audio>
             <h1 :style="{ 'margin-right': gap + '%' }">Happy birthday</h1>
         </header>
         <canvas id="game" width="300" height="200"></canvas>
@@ -110,6 +111,7 @@ export default {
     },
     mounted() {
         this.move();
+
     }
 }
 </script>
@@ -138,6 +140,10 @@ h1 {
     @media (max-width: 768px) {
         font-size: 64px;
     }     
+}
+h2 {
+    color: white;
+    padding-top: 16px;
 }
 footer {
     
