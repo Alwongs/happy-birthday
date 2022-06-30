@@ -39,7 +39,7 @@ export default {
         drawSmileFirst() {
             const canvas = document.getElementById('game');
             const ctx = canvas.getContext('2d');       
-            ctx.fillStyle = "white";
+            ctx.fillStyle = "red";
             setInterval(() => {
                 if ( this.y < 185 && this.x < 100) {                    
                     ctx.fillRect(this.x, this.y, 15, 15);
@@ -53,7 +53,7 @@ export default {
         drawSmileSecond() {
             const canvas = document.getElementById('game');
             const ctx = canvas.getContext('2d');       
-            ctx.fillStyle = "white";
+            ctx.fillStyle = "red";
             setInterval(() => {
                if (this.y === 185 && this.x < 200) {
                     ctx.fillRect(this.x, this.y, 15, 15);
@@ -66,7 +66,7 @@ export default {
         drawSmileThird() {
             const canvas = document.getElementById('game');
             const ctx = canvas.getContext('2d');       
-            ctx.fillStyle = "white";
+            ctx.fillStyle = "red";
             setInterval(() => {
                if (this.x >= 200 && this.x < 285) {
                     ctx.fillRect(this.x, this.y, 15, 15);
@@ -80,7 +80,7 @@ export default {
         drawLeftEye() {
             const canvas = document.getElementById('game');
             const ctx = canvas.getContext('2d');       
-            ctx.fillStyle = "white";
+            ctx.fillStyle = "blue";
             this.x = 120;
             this.y = 80;
             setInterval(() => {
@@ -95,7 +95,7 @@ export default {
         drawRightEye() {
             const canvas = document.getElementById('game');
             const ctx = canvas.getContext('2d');       
-            ctx.fillStyle = "white";
+            ctx.fillStyle = "blue";
             this.x = 180;
             this.y = 80;
             setInterval(() => {
@@ -128,7 +128,7 @@ h1 {
     text-align: center;
     padding: 32px;
     font-size: 128px;
-    color: white;
+    color: yellow;
     @media (min-width: 1024px) and (max-width: 1440px) {
         font-size: 86px;
     }     
